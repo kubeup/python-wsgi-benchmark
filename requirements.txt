@@ -1,0 +1,3 @@
+gevent==1.1.2
+meinheld==0.6.1
+gunicorn==19.7.1
