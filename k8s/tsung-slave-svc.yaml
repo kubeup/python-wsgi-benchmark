@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: tsung-slave
+  name: tsung-slave
+spec:
+  clusterIP: None
+  selector:
+    run: tsung-slave
+  ports:
+  - port: 22
+  type: ClusterIP

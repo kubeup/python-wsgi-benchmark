@@ -1,0 +1,26 @@
+apiVersion: v1
+data:
+  config.xml: |
+    <?xml version="1.0" encoding="utf-8"?>
+    <!DOCTYPE tsung SYSTEM "/usr/share/tsung/tsung-1.0.dtd" []>
+    <tsung loglevel="warning" backend="json">
+      <clients>
+        <client host="tsung-slave-0.tsung-slave.tsung.svc.cluster.local" />
+      </clients>
+      <servers>
+        <server host="target" port="8000" type="tcp"/>
+      </servers>
+      <load>
+        <arrivalphase phase="1" duration="1" unit="minute">
+          <users arrivalrate="100" unit="second"/>
+        </arrivalphase>
+      </load>
+    <sessions>
+      <session name="es_load" weight="1" type="ts_http">
+        <request> <http url="/" method="GET" version="1.1"></http> </request>
+      </session>
+    </sessions>
+    </tsung>
+kind: ConfigMap
+metadata:
+  name: tsung-config

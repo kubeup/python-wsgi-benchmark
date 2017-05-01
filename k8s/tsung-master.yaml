@@ -1,0 +1,31 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: tsung-master
+spec:
+  serviceName: "tsung-master"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: tsung-master
+    spec:
+      containers:
+      - name: tsung
+        image: ddragosd/tsung-docker:1.6.0
+        env:
+        - name: ERL_SSH_PORT
+          value: "22"
+        args:
+        - -k
+        - -f
+        - /tsung/config.xml
+        - -F
+        - start
+        volumeMounts:
+        - mountPath: /tsung
+          name: config-volume
+      volumes:
+      - configMap:
+          name: tsung-config
+        name: config-volume

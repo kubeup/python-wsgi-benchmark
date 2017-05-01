@@ -1,0 +1,18 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: tsung-slave
+spec:
+  serviceName: "tsung-slave"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: tsung-slave
+    spec:
+      containers:
+      - name: tsung
+        image: ddragosd/tsung-docker:1.6.0
+        env:
+        - name: SLAVE
+          value: "true"
