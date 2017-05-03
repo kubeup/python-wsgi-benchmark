@@ -2,25 +2,25 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    runner: gevent
+    runner: meinheld
     app: target
-  name: gevent
+  name: meinheld
 spec:
   replicas: 1
   selector:
     matchLabels:
-      runner: gevent
+      runner: meinheld
   template:
     metadata:
       labels:
-        runner: gevent
+        runner: meinheld
         app: target
     spec:
       containers:
       - command:
-        - gevent_server
+        - meinheld_server
         - -b
         - 0.0.0.0:8000
         - app.simple:pong
         image: kubeup/python-wsgi-benchmark
-        name: gevent
+        name: meinheld
