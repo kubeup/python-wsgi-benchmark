@@ -21,6 +21,7 @@ spec:
         - meinheld_server
         - -b
         - 0.0.0.0:8000
+        - --disable-logging
         - app.simple:pong
         image: kubeup/python-wsgi-benchmark
         name: meinheld

@@ -8,6 +8,8 @@ def parse_args():
     parser.add_argument("-b", "--bind",
                         help="The socket to bind",
                         default="127.0.0.1:8000")
+    parser.add_argument('--disable-logging', dest='disable_logging', action='store_true')
+    parser.set_defaults(disable_logging=False)
 
     args = parser.parse_args()
     return args

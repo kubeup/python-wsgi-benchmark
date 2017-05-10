@@ -12,7 +12,11 @@ def main():
 
     bind = args.bind
 
-    server = WSGIServer(bind, app)
+    if args.disable_logging:
+        server = WSGIServer(bind, app, log=None)
+    else:
+        server = WSGIServer(bind, app)
+
     server.serve_forever()
 
 if __name__ == '__main__':

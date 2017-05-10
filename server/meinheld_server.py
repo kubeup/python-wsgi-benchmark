@@ -12,6 +12,9 @@ def main():
 
     address, port = args.bind.split(':')
 
+    if args.disable_logging:
+        server.set_access_logger(None)
+
     server.listen((address, int(port)))
     server.run(app)
 
