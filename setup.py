@@ -15,6 +15,7 @@ setup(
         'console_scripts': [
             'gevent_server=server.gevent_server:main',
             'meinheld_server=server.meinheld_server:main',
+            'bjoern_server=server.bjoern_server:main',
         ],
     },
 )
