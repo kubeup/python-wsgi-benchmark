@@ -9,7 +9,7 @@ def main():
 
     address, port = args.bind.split(':')
 
-    bjoern.run(app, address, port)
+    bjoern.run(app, address, int(port))
 
 if __name__ == '__main__':
     main()
