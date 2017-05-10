@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    runner: bjoern
+    app: target
+  name: bjoern
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      runner: bjoern
+  template:
+    metadata:
+      labels:
+        runner: bjoern
+        app: target
+    spec:
+      containers:
+      - command:
+        - bjoern_server
+        - -b
+        - 0.0.0.0:8000
+        - app.simple:pong
+        image: kubeup/python-wsgi-benchmark
+        name: bjoern
