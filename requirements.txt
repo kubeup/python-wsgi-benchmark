@@ -1,3 +1,5 @@
 gevent==1.1.2
 meinheld==0.6.1
 gunicorn==19.7.1
+bjoern==1.4.3
+uWSGI==2.0.15
