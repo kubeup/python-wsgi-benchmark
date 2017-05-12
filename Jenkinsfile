@@ -1,6 +1,6 @@
 node {
     def app = 'bench-6efd6'
-    def cases = ['gevent', 'meinheld', 'bjoern']
+    def cases = ['gevent', 'meinheld', 'bjoern', 'gunicorn-sync', 'gunicorn-gevent', 'gunicorn-meinheld', 'uwsgi', 'uwsgi-gevent']
     def timestamp = sh(script: 'date +%s', returnStdout: true).trim()
     checkout scm
     stage('Launch in k8s') {

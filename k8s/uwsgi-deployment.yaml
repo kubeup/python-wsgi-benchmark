@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    runner: uwsgi
+    app: target
+  name: uwsgi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      runner: uwsgi
+  template:
+    metadata:
+      labels:
+        runner: uwsgi
+        app: target
+    spec:
+      containers:
+      - command:
+        - uwsgi
+        - --http
+        - :8000
+        - --disable-logging
+        - -w
+        - app.simple:pong
+        image: kubeup/python-wsgi-benchmark
+        name: uwsgi

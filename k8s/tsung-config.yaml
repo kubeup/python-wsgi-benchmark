@@ -17,7 +17,7 @@ data:
       </load>
     <sessions>
       <session name="es_load" weight="1" type="ts_http">
-        <for from="1" to="20" incr="1" var="counter">
+        <for from="1" to="10" incr="1" var="counter">
           <request> <http url="/" method="GET" version="1.1"></http> </request>
         </for>
       </session>

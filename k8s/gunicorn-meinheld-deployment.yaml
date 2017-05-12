@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    runner: gunicorn-meinheld
+    app: target
+  name: gunicorn-meinheld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      runner: gunicorn-meinheld
+  template:
+    metadata:
+      labels:
+        runner: gunicorn-meinheld
+        app: target
+    spec:
+      containers:
+      - command:
+        - gunicorn
+        - -b
+        - 0.0.0.0:8000
+        - -w
+        - "1"
+        - -k
+        - meinheld.gmeinheld.MeinheldWorker
+        - app.simple:pong
+        image: kubeup/python-wsgi-benchmark
+        name: gunicorn
