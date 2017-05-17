@@ -10,14 +10,14 @@ data:
       <servers>
         <server host="target" port="8000" type="tcp"/>
       </servers>
-      <load>
+      <load duration="1" unit="hour">
         <arrivalphase phase="1" duration="1" unit="minute">
-          <users arrivalrate="100" unit="second"/>
+          <users arrivalrate="10" unit="second"/>
         </arrivalphase>
       </load>
     <sessions>
       <session name="es_load" weight="1" type="ts_http">
-        <for from="1" to="10" incr="1" var="counter">
+        <for from="1" to="10000" incr="1" var="counter">
           <request> <http url="/" method="GET" version="1.1"></http> </request>
         </for>
       </session>

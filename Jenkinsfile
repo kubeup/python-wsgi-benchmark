@@ -44,6 +44,7 @@ def runTest(current) {
 }
 
 def reportTest(app, timestamp, current) {
+    sh("python hacks/fixlog.py ${current}.json")
     sh("curl -X PUT -d @${current}.json https://${app}.firebaseio.com/stats/wsgi-server/${timestamp}/cases/${current}.json")
     sh("curl -X PUT -d 'true' https://${app}.firebaseio.com/tests/wsgi-server/${timestamp}/cases/${current}.json")
     sh("curl -X PUT -d 'true' https://${app}.firebaseio.com/cases/wsgi-server/${current}/${timestamp}.json")
