@@ -3,6 +3,7 @@ def pong(environ, start_response):
     output = 'Pong!'
 
     response_headers = [('Content-type', 'text/plain'),
+                        ('Connection', 'keep-alive'),
                         ('Content-Length', str(len(output)))]
     start_response(status, response_headers)
     return [output]

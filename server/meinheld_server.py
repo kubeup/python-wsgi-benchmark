@@ -16,6 +16,7 @@ def main():
         server.set_access_logger(None)
 
     server.listen((address, int(port)))
+    server.set_keepalive(10)
     server.run(app)
 
 if __name__ == '__main__':

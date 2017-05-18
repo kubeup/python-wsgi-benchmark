@@ -24,6 +24,8 @@ spec:
         - --gevent
         - "2000"
         - --disable-logging
+        - --http-keepalive
+        - --so-keepalive
         - -w
         - app.simple:pong
         image: kubeup/python-wsgi-benchmark
